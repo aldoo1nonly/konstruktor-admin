@@ -2,17 +2,45 @@
   <!-- Header / Nav -->
   <header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur border-b">
     <div class="mx-auto max-w-screen-xl px-8 h-16 flex items-center justify-between">
-      <a href="/" class="inline-flex items-center gap-3">
+      <a href="{{ route('home') }}" class="inline-flex items-center gap-3">
         <img src="{{ asset('images/hda-logo.svg') }}" alt="HDA Interior" class="h-8 w-auto"/>
         <span class="font-semibold tracking-tight text-gray-800">HDA Interior</span>
       </a>
+
+      {{-- Desktop nav --}}
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
         <a href="#about" class="text-gray-700 hover:text-teal-700">About</a>
         <a href="#projects" class="text-gray-700 hover:text-teal-700">Projects</a>
         <a href="#services" class="text-gray-700 hover:text-teal-700">Services</a>
+        <a href="{{ route('portfolio') }}" class="text-gray-700 hover:text-teal-700">Portfolio</a>
+        <a href="{{ route('contact') }}" class="text-gray-700 hover:text-teal-700">Contact</a>
         <a href="{{ route('login') }}" class="rounded-xl bg-teal-600 px-4 py-2 text-white hover:bg-teal-700">Login</a>
       </nav>
+
+      {{-- Mobile trigger (opsional sederhana tanpa JS lib) --}}
+      <button id="navToggle" class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
+
+    {{-- Mobile menu --}}
+    <div id="mobileMenu" class="md:hidden hidden border-t bg-white">
+      <div class="mx-auto max-w-screen-xl px-8 py-3 flex flex-col gap-2 text-sm">
+        <a href="#about" class="py-2 text-gray-700">About</a>
+        <a href="#projects" class="py-2 text-gray-700">Projects</a>
+        <a href="#services" class="py-2 text-gray-700">Services</a>
+        <a href="{{ route('portfolio') }}" class="py-2 text-gray-700">Portfolio</a>
+        <a href="{{ route('contact') }}" class="py-2 text-gray-700">Contact</a>
+        <a href="{{ route('login') }}" class="py-2 text-teal-700 font-semibold">Login</a>
+      </div>
+    </div>
+
+    <script>
+      const t=document.getElementById('navToggle'), m=document.getElementById('mobileMenu');
+      t?.addEventListener('click',()=>m.classList.toggle('hidden'));
+    </script>
   </header>
 
   <!-- HERO -->
@@ -21,7 +49,7 @@
     <div class="mx-auto max-w-screen-xl px-8">
       <div class="relative flex h-[520px] items-center text-white">
         <div class="max-w-3xl">
-          <span class="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs font-semibold ring-1 ring-white/20">Award‑Winning Interior Studio</span>
+          <span class="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs font-semibold ring-1 ring-white/20">Award-Winning Interior Studio</span>
           <h1 class="mt-4 text-5xl font-bold leading-tight tracking-tight">Transform Your Space</h1>
           <p class="mt-4 text-lg opacity-90">Elevating homes and offices with timeless design and expert craftsmanship.</p>
           <div class="mt-8 flex flex-wrap gap-4">
@@ -75,7 +103,7 @@
               <h3 class="text-lg font-semibold">Project {{$i}}</h3>
               <p class="mt-2 line-clamp-2 text-sm text-gray-600">Short project description goes here.</p>
               <div class="mt-4">
-                <a href="#" class="text-sm font-medium text-teal-700 hover:underline">View details →</a>
+                <a href="{{ route('portfolio') }}" class="text-sm font-medium text-teal-700 hover:underline">View details →</a>
               </div>
             </div>
           </article>
