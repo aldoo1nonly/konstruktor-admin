@@ -1,4 +1,6 @@
-<x-guest-layout>
+@extends('layouts.auth')
+
+@section('content')
     <div class="min-h-screen grid md:grid-cols-2">
         {{-- Left / Branding Panel --}}
         <div class="hidden md:flex relative overflow-hidden bg-gradient-to-br from-indigo-600 via-indigo-500 to-indigo-400">
@@ -160,4 +162,4 @@
             </div>
         </div>
     </div>
-</x-guest-layout>
+@endsection
